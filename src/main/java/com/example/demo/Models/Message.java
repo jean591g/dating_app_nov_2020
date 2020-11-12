@@ -1,6 +1,11 @@
 package com.example.demo.Models;
 
+import java.sql.SQLException;
+import com.example.demo.Repositories.MessageRepository;
+
 public class Message {
+    MessageRepository mp = new MessageRepository();
+
     private int senderId;
     private int receiverId;
     private String msg;
@@ -37,10 +42,15 @@ public class Message {
 
     @Override
     public String toString() {
-        return "Message{" +
-                "Fra: " + senderId +
-                ", til: " + receiverId +
-                ", besked: '" + msg + '\'' +
-                '}';
+        try {
+            return "Besked{" +
+                    "Fra: " + mp.getNameFromId(senderId) +
+                    ", til: " + mp.getNameFromId(receiverId) +
+                    ", besked: '" + msg + '\'' +
+                    '}';
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return "fejl";
     }
 }

@@ -15,7 +15,7 @@ public class MessageRepository {
     List<Message> allMessages = new ArrayList<>();
 
     public void sendMessage(int senderId, int receiverId, String message) throws SQLException {
-        PreparedStatement ps = rp.establishConnection().prepareStatement("INSERT INTO messages(senderId,receiverId,msg) VALUES(?,?,?)");
+        PreparedStatement ps = rp.establishConnection().prepareStatement("INSERT INTO messages(senderId,receiverId,message) VALUES(?,?,?)");
         ps.setInt(1,senderId);
         ps.setInt(2,receiverId);
         ps.setString(3,message);
@@ -23,10 +23,11 @@ public class MessageRepository {
         ps.executeUpdate();
     }
 
-    public List<Message> seeMessage(int currentId) throws SQLException {
-        PreparedStatement ps = rp.establishConnection().prepareStatement("SELECT senderId,recieverId,message FROM messages WHERE senderId = ? OR receiverId = ?");
-        ps.setInt(1,currentId);
-        ps.setInt(2,currentId);
+    public List<Message> seeMessage(int id) throws SQLException {
+        allMessages.clear();
+        PreparedStatement ps = rp.establishConnection().prepareStatement("select senderId, receiverId, message from messages where senderId = ? or receiverId = ?");
+        ps.setInt(1,id);
+        ps.setInt(2,id);
 
         ResultSet rs = ps.executeQuery();
         while (rs.next()){
@@ -34,5 +35,17 @@ public class MessageRepository {
             allMessages.add(temp);
         }
         return allMessages;
+    }
+
+    public String getNameFromId(int id) throws SQLException{
+        PreparedStatement ps = rp.establishConnection().prepareStatement("SELECT name FROM profiles WHERE id = ?");
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+        String res = null;
+        while(rs.next()){
+            res = rs.getString(1);
+        }
+        System.out.println(res);
+        return res;
     }
 }
