@@ -11,15 +11,19 @@
 <div th:insert="fragments/menuloggedin :: menuloggedin"></div>
 <div th:insert="fragments/jumbotron :: jumbotron"></div>
 
+
 <div class="row" th:each="allProfiles : ${profileList}">
-    <div class="col" id="profileList">
-        <img class="" th:src="'data:image/jpeg;base64,' + ${allProfiles.getImgBase64()}" />
+    <div class="col" id="profileDiv">
+        <form action="/tomain" method="post">
+            <button class="btn btn-primary" type="submit" name="candidate">Tilbage til hovedmenu</button>
+        </form>
+        <img class="profilePicture" th:src="'data:image/jpeg;base64,' + ${allProfiles.getImgBase64()}" />
     </div>
 
     <div class="col" >
-        <h4 th:text="${allProfiles.getName()}"></h4>
-        <h4 th:text="${allProfiles.getKodeord()}"></h4><br>
-        <h4 th:text="${allProfiles.getEmail()}"></h4>
+        <h3>Navn:</h3><td th:text="${allProfiles.getName()}"></td>
+        <h3>køn:</h3><td th:text="${allProfiles.getKodeord()}"></td><br>
+        <h3>Description:</h3><td th:text="${allProfiles.getEmail()}"></td>
         <form action="/addtokandidat" method="post">
             <button class="btn btn-primary" type="submit" th:value="${allProfiles.getId()}" name="addToKandidat">Tilføj til favoritter</button>
         </form>

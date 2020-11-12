@@ -151,6 +151,23 @@ a:hover {
     height: 30%;
     width: 30%;
 }
+#profileDiv {
+    margin-left: 350px;
+}
+.profilePicture {
+    height: 350px;
+    width: auto;
+}
+
+.profileBox {
+    border: #333333;
+    border-width: 1px;
+}
+.admin {
+    margin-left: 40%;
+    margin-right: auto;
+
+}
 
 /* Set a specific color for each brand */
 

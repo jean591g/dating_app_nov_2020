@@ -141,11 +141,16 @@ public class DatingController {
 
     //see messages
     @PostMapping("/myprofile/messages")
-    public String seeMessages(Model m) throws SQLException {
+    public String seeMessages(Model m, Model myprofileModel) throws SQLException {
         allMessages = mp.seeMessage(currentLogin.getId());
         m.addAttribute("messages",allMessages);
-        System.out.println(allMessages);
+        myprofileModel.addAttribute("profileID",allProfiles);
         return "myprofile";
+    }
+
+    @PostMapping("/tomain")
+    public String toMain() {
+        return "main";
     }
 
     //Login

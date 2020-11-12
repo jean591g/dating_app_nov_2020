@@ -12,12 +12,8 @@
 <div th:insert="fragments/jumbotron :: jumbotron"></div>
 
 <div class="container" id="main">
-
-    <!-- Indsæt indhold her -->
     <div class="row">
-
         <div class="col-md-4">
-
             <div id="form-container">
                 <h2>Opret din gratis profil her</h2>
                 <form id="createProfileForm" action="/createprofile"  method="post" enctype="multipart/form-data">
@@ -34,47 +30,14 @@
                     </div>
                     <button class="btn btn-primary" type="submit">Opret profil</button>
                 </form>
-
-                <!-- virker ikke
-                        <br><br><br>
-                        <h2>Søg profiler</h2>
-                        <form id="toSearchProfile" action="/main" method="post">
-                            <button class="btn btn-primary" id="search-form" type="submit">Søg nu</button>
-                        </form>
-                -->
-                <br><br><br>
-                <h2>Slet profil</h2>
-                <form id="delete-form" action="/deleteprofile" method="post">
-                    <div class="form-group">
-                        <input type id="delete" name="delete" placeholder="Vælg bruger ID..."><br><br>
-                    </div>
-                    <button class="btn btn-primary" type="submit">Slet profil</button>
-                </form>
             </div>
-
-            <br><br><br>
-
-            <br>
-
         </div>
 
         <div class="col-lg-6">
-            <h1> </h1>
             <p><img src="images/members_grid_web.jpg" width="150%" height="auto" alt="members-picture">
-                <br><br></p>
-
-            <h2>Profiler</h2>
-
-            <tr th:each="profile : ${profile}">
-                <td th:text="${profile.name}" /><br>
-                <td th:text="${profile.gender}" /><br>
-                <td th:text="${profile.description}" /><br><br>
-            </tr>
-            <br><br>
-
         </div>
     </div>
-</div> <!-- /container -->
+</div>
 
 <div th:insert="fragments/footer :: footer"></div>
 </body>

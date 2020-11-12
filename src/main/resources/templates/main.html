@@ -18,16 +18,16 @@
 
         <!-- profil liste -->
         <div class="col" id="profileList">
-            <h2>Profiles</h2>
+            <h2>Profiler</h2>
             <div th:each="allProfiles : ${profileList}">
                 <div>
                     <form action="/profileId" method="post">
                         <!--- kodeord og gender er modsat hinanden, nød til at skrive kodeord, for at få gender -->
-                        <img class="profileImage" th:src="'data:image/jpeg;base64,' + ${allProfiles.getImgBase64()}" /><br>
+                        <img class="profileImage" th:src="'data:image/jpeg;base64,' + ${allProfiles.getImgBase64()}" />
                         <p th:text="${allProfiles.getName()}"></p>
                         <p th:text="${allProfiles.getKodeord()}"></p>
-                        <p th:text="${allProfiles.getDescription()}"></p><br>
-                        <button class="btn btn-primary" type="submit" th:value="${allProfiles.getId()}" name="profileId">Se profil</button><br>
+                        <p th:text="${allProfiles.getDescription()}"></p>
+                        <button class="btn btn-primary" type="submit" th:value="${allProfiles.getId()}" name="profileId">Se profil</button><br><br>
                     </form>
                 </div>
             </div>
@@ -35,10 +35,10 @@
             <!-- kandidat liste -->
             <div id="candidateList">
                 <h2>Favoritter</h2>
-                <div th:each="allCandidates : ${candidateList}">
+                <div class="profileBox"th:each="allCandidates : ${candidateList}">
                     <div>
                         <!--- kodeord og gender er modsat hinanden, nød til at skrive kodeord, for at få gender -->
-                        <img class="profileImage" th:src="'data:image/jpeg;base64,' + ${allCandidates.getImgBase64()}" /><br>
+                        <img class="profileImage" th:src="'data:image/jpeg;base64,' + ${allCandidates.getImgBase64()}" />
                         <p th:text="${allCandidates.getName()}"></p>
                         <p th:text="${allCandidates.getKodeord()}"></p>
                         <p th:text="${allCandidates.getDescription()}"></p>
