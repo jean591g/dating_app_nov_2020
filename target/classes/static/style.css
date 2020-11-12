@@ -25,6 +25,7 @@ body{
     color: #333333;
     background-color: #eeeeee;
     border-color: #333333;
+    margin-top: 5px;
 }
 
 .btn:hover{
@@ -144,6 +145,11 @@ a:hover {
 /* Add a hover effect if you want */
 .fa:hover {
     opacity: 0.7;
+}
+
+.profileImage {
+    height: 30%;
+    width: 30%;
 }
 
 /* Set a specific color for each brand */

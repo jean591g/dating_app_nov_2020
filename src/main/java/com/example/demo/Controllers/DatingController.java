@@ -138,12 +138,12 @@ public class DatingController {
 
     @PostMapping("/profileId")
     public String getProfile(WebRequest profileClick){
-        System.out.println("test");
         String id = profileClick.getParameter("profileId");
         System.out.println(id);
 
         try {
             allProfiles = rp.profile(Integer.parseInt(id));
+            allCandidates = rp.profile(Integer.parseInt(id));
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();

@@ -11,24 +11,20 @@
 <div th:insert="fragments/menuloggedin :: menuloggedin"></div>
 <div th:insert="fragments/jumbotron :: jumbotron"></div>
 
-<div class="row">
-    <div class="col">
+<div class="row" th:each="allProfiles : ${profileList}">
+    <div class="col" id="profileList">
+        <img class="" th:src="'data:image/jpeg;base64,' + ${allProfiles.getImgBase64()}" />
+    </div>
 
-        <div class="col" id="profileList">
-            <div th:each="allProfiles : ${profileList}">
-                <div>
-                    <img class="le" th:src="'data:image/jpeg;base64,' + ${allProfiles.getImgBase64()}" />
-                    <h4 th:text="${allProfiles.getId()}"></h4>
-                    <h4 th:text="${allProfiles.getName()}"></h4>
-                    <h4 th:text="${allProfiles.getKodeord()}"></h4>
-                    <h4 th:text="${allProfiles.getGender()}"></h4>
-                    <h4 th:text="${allProfiles.getEmail()}"></h4>
-                    <h4 th:text="${allProfiles.getDescription()}"></h4>
-                    <h4 th:text="${allProfiles.getAdmin()}"></h4>
-                </div>
-                <form action="/addtokandidat" method="post">
-                    <button class="btn btn-primary" type="submit" th:value="${allProfiles.getId()}" name="addToKandidat">Tilføj til favoritter</button>
-                </form>
+    <div class="col" >
+        <h4 th:text="${allProfiles.getName()}"></h4>
+        <h4 th:text="${allProfiles.getKodeord()}"></h4><br>
+        <h4 th:text="${allProfiles.getEmail()}"></h4>
+        <form action="/addtokandidat" method="post">
+            <button class="btn btn-primary" type="submit" th:value="${allProfiles.getId()}" name="addToKandidat">Tilføj til favoritter</button>
+        </form>
+    </div>
+
 
                 <!--
                 <div id="edit-container">
@@ -48,9 +44,7 @@
                     </div>
                 </div>
                 -->
-            </div>
-        </div>
-    </div>
+
 
     <div class="col">
         <div th:each="allProfiles : ${profileList}">
