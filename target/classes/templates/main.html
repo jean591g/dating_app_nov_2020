@@ -15,39 +15,6 @@
 
     <!-- Indsæt indhold her -->
     <div class="row">
-
-        <!-- profil liste -->
-        <div class="col" id="profileList">
-            <h2>Profiler</h2>
-            <div th:each="allProfiles : ${profileList}">
-                <div>
-                    <form action="/profileId" method="post">
-                        <!--- kodeord og gender er modsat hinanden, nød til at skrive kodeord, for at få gender -->
-                        <img class="profileImage" th:src="'data:image/jpeg;base64,' + ${allProfiles.getImgBase64()}" />
-                        <p th:text="${allProfiles.getName()}"></p>
-                        <p th:text="${allProfiles.getKodeord()}"></p>
-                        <p th:text="${allProfiles.getDescription()}"></p>
-                        <button class="btn btn-primary" type="submit" th:value="${allProfiles.getId()}" name="profileId">Se profil</button><br><br>
-                    </form>
-                </div>
-            </div>
-
-            <!-- kandidat liste -->
-            <div id="candidateList">
-                <h2>Favoritter</h2>
-                <div class="profileBox"th:each="allCandidates : ${candidateList}">
-                    <div>
-                        <!--- kodeord og gender er modsat hinanden, nød til at skrive kodeord, for at få gender -->
-                        <img class="profileImage" th:src="'data:image/jpeg;base64,' + ${allCandidates.getImgBase64()}" />
-                        <p th:text="${allCandidates.getName()}"></p>
-                        <p th:text="${allCandidates.getKodeord()}"></p>
-                        <p th:text="${allCandidates.getDescription()}"></p>
-                        <button class="btn btn-primary" type="submit" th:value="${allCandidates.getId()}" name="profileId">Se profil</button><br>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- søg profiler efter køn knap -->
         <div class="col-md-6">
             <div id="form-container">
@@ -59,7 +26,6 @@
                     </div>
                     <button class="btn btn-primary" type="submit">Søg nu</button>
                 </form>
-
             </div>
 
             <!-- se kandidatliste -->
@@ -68,11 +34,42 @@
                     <button class="btn btn-primary" type="submit" name="candidate">Se dine favoritter</button>
                 </form>
             </div>
-
-
-            <br><br>
         </div>
     </div>
+
+    <main>
+        <div class="admin" th:each="allProfiles : ${profileList}">
+            <div class="card">
+                <img th:src="'data:image/jpeg;base64,' + ${allProfiles.getImgBase64()}" style="width:100%"/><br>
+                <div class="info">
+                    <form action="/profileId" method="post">
+                        <p th:text="${allProfiles.getName()}"></p>
+                        <p th:text="${allProfiles.getKodeord()}"></p>
+                        <p th:text="${allProfiles.getEmail()}"></p>
+                        <button class="btn btn-primary" type="submit" th:value="${allProfiles.getId()}" name="profileId">Se profil</button><br><br>
+                    </form>
+                </div>
+            </div>
+            <br><br>
+        </div>
+    </main>
+
+    <main>
+        <div class="admin" th:each="allCandidates : ${candidateList}">
+            <div class="card">
+                <img th:src="'data:image/jpeg;base64,' + ${allCandidates.getImgBase64()}" style="width:100%"/><br>
+                <div class="info">
+                    <form action="/profileId" method="post">
+                        <p th:text="${allCandidates.getName()}"></p>
+                        <p th:text="${allCandidates.getKodeord()}"></p>
+                        <p th:text="${allCandidates.getGender()}"></p>
+                        <button class="btn btn-primary" type="submit" th:value="${allCandidates.getId()}" name="profileId">Se profil</button><br><br>
+                    </form>
+                </div>
+            </div>
+            <br><br>
+        </div>
+    </main>
 </div> <!-- /container -->
 
 <!--
