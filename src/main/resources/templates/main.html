@@ -26,7 +26,7 @@
                         <img class="profileImage" th:src="'data:image/jpeg;base64,' + ${allProfiles.getImgBase64()}" />
                         <p th:text="${allProfiles.getName()}"></p>
                         <p th:text="${allProfiles.getKodeord()}"></p>
-                        <p th:text="${allProfiles.getDescription()}"></p>
+                        <p th:text="${allProfiles.getEmail()}"></p>
                         <button class="btn btn-primary" type="submit" th:value="${allProfiles.getId()}" name="profileId">Se profil</button><br><br>
                     </form>
                 </div>
@@ -41,7 +41,7 @@
                         <img class="profileImage" th:src="'data:image/jpeg;base64,' + ${allCandidates.getImgBase64()}" />
                         <p th:text="${allCandidates.getName()}"></p>
                         <p th:text="${allCandidates.getKodeord()}"></p>
-                        <p th:text="${allCandidates.getDescription()}"></p>
+                        <p th:text="${allCandidates.getGender()}"></p>
                         <button class="btn btn-primary" type="submit" th:value="${allCandidates.getId()}" name="profileId">Se profil</button><br>
                     </div>
                 </div>

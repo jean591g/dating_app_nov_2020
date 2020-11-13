@@ -24,9 +24,23 @@
                         <input type="text" id="pName" name="pName" placeholder="Navn..."><br>
                         <input type="text" id="pKodeord" name="pKodeord" placeholder="Kodeord..."><br>
                         <input type="text" id="pEmail" name="pEmail" placeholder="Mailadresse..."><br>
-                        <input type="text" id="pDescription" name="pDescription" placeholder="Om dig selv..."><br>
-                        <label for="file">Vælg dit billede</label>
-                        <input type="file" class="form-control-file" name="file" id="file" required>
+                        <input type="text" id="pDescription" name="pDescription" placeholder="Om dig selv..."><br><br>
+                        <label>Vælg dit billede</label>
+                        <br>
+                        <input type="file" class="form-control-file" name="file" id="file-upload" required>
+                        <label for="file-upload" class="custom-file-upload"><i class="glyphicon glyphicon-open"></i>&nbsp;Vælg fil...</label>
+                        <span>
+                            <strong>Valgt fil:</strong>
+                            <span id="file-name">Ingen fil</span>
+                        </span>
+                        <script>
+                            let inputFile = document.getElementById('file-upload');
+                            let fileNameField = document.getElementById('file-name');
+                            inputFile.addEventListener('change', function(event) {
+                                let uploadedFileName = event.target.files[0].name;
+                                fileNameField.textContent = uploadedFileName;
+                            })
+                        </script>
                     </div>
                     <button class="btn btn-primary" type="submit">Opret profil</button>
                 </form>

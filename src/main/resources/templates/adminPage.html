@@ -9,16 +9,24 @@
 <div th:insert="fragments/menu :: menu"></div>
 <div th:insert="fragments/jumbotron :: jumbotron"></div>
 
-<div class="admin"th:each="allProfiles : ${allProfiles}">
-    <form action="/deleteprofile" method="post">
-        <img class="profilePicture" th:src="'data:image/jpeg;base64,' + ${allProfiles.getImgBase64()}" />
-        <p th:text="${allProfiles.getId()}"></p>
-        <p th:text="${allProfiles.getName()}"></p>
-        <p th:text="${allProfiles.getKodeord()}"></p>
-        <p th:text="${allProfiles.getDescription()}"></p>
-        <button class="btn btn-primary" type="submit" th:value="${allProfiles.getId()}" name="delete-admin" >Slet profil</button><br>
-    </form>
-</div>
+<main>
+    <div class="admin"th:each="allProfiles : ${allProfiles}">
+        <div class="card">
+            <img th:src="'data:image/jpeg;base64,' + ${allProfiles.getImgBase64()}" style="width:100%"/><br>
+            <div class="info">
+                <form action="/deleteprofile" method="post">
+                    <h6 th:text="${allProfiles.getId()}"></h6>
+                    <h3 th:text="${allProfiles.getName()}"></h3>
+                    <h6 th:text="${allProfiles.getKodeord()}"></h6>
+                    <h6 th:text="${allProfiles.getEmail()}"></h6>
+                    <button class="btn btn-primary" type="submit" th:value="${allProfiles.getId()}" name="delete-admin" >Slet profil</button><br>
+                </form>
+            </div>
+        </div>
+        <br><br>
+    </div>
+</main>
+<br><br>
 <div th:insert="fragments/footer :: footer"></div>
 </body>
 </html>
