@@ -93,14 +93,19 @@ public class ProfileRepository {
         ps.executeUpdate();
     }
 
-    public void editProfile(int id, String name, String gender, String email, String description) throws SQLException {
-        PreparedStatement ps = establishConnection().prepareStatement("UPDATE profiles SET name = ?, gender = ?, email = ?, description = ? where id= ?");
+    public List<Profile> editProfile(int id, String name, String gender, String email, String kodeord, String description) throws SQLException {
+        PreparedStatement ps = establishConnection().prepareStatement("UPDATE profiles SET name = ?, gender = ?, email = ?, description = ?, kodeord = ? where id= ?");
         ps.setString(1,name);
         ps.setString(2,gender);
         ps.setString(3,email);
         ps.setString(4,description);
-        ps.setInt(5,id);
+        ps.setString(5,kodeord);
+        ps.setInt(6,id);
         ps.executeUpdate();
+
+        PreparedStatement pss = establishConnection().prepareStatement("SELECT * FROM profiles where id = ?");
+        pss.setInt(1,id);
+        return returnProfile(pss);
     }
 
     public List<Profile> searchProfile(String gender) throws SQLException {

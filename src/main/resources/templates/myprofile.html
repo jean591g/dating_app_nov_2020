@@ -23,11 +23,11 @@
                 <div>
                     <tr th:each="allProfiles : ${profileID}">
                         <img class="profileImage" th:src="'data:image/jpeg;base64,' + ${allProfiles.getImgBase64()}" /><br>
-                        <h3>Navn:</h3><td th:text="${allProfiles.getName()}" /><br>
-                        <h3>køn:</h3><td th:text="${allProfiles.getKodeord()}" /><br>
-                        <h3>Email:</h3><td th:text="${allProfiles.getGender()}" /><br>
-                        <h3>Email:</h3><td th:text="${allProfiles.getDescription()}" /><br>
-                        <h3>Description:</h3><td th:text="${allProfiles.getEmail()}" /><br><br>
+                        <h6>Navn:</h6><h3 th:text="${allProfiles.getName()}" />
+                        <h6>køn:</h6><h3 th:text="${allProfiles.getKodeord()}" />
+                        <h6>Email:</h6><h3 th:text="${allProfiles.getGender()}" />
+                        <h6>Kodeord:</h6><h3 th:text="${allProfiles.getDescription()}" />
+                        <h6>Description:</h6><h3 th:text="${allProfiles.getEmail()}" /><br>
                     </tr>
                 </div>
             </div>
@@ -41,6 +41,7 @@
                         <input type="radio" name="eGender" value="Kvinde"> Kvinde<br>
                         <input type="text" id="eName" name="eName" placeholder="Ændre navn..."><br>
                         <input type="text" id="eEmail" name="eEmail" placeholder="Ændre mailadresse..."><br>
+                        <input type="text" id="eKodeord" name="eKodeord" placeholder="Ændre kodeord"><br>
                         <input type="text" id="eDescription" name="eDescription" placeholder="Ændre beskrivelse...">
                     </div>
                     <button class="btn btn-primary" type="submit">Gem profil</button>

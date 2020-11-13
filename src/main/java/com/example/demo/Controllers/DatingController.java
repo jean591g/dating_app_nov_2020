@@ -95,6 +95,8 @@ public class DatingController {
     // Edit Profile
     @PostMapping("/editprofile")
     public String editProfile(WebRequest editProfile) throws IOException {
+        allProfiles.clear();
+        allCandidates.clear();
         try {
             int id = currentLogin.getId();
             //int id = Integer.parseInt(editProfile.getParameter("eId"));
@@ -102,12 +104,13 @@ public class DatingController {
             String gender = editProfile.getParameter("eGender");
             String email = editProfile.getParameter("eEmail");
             String description = editProfile.getParameter("eDescription");
-            rp.editProfile(id,name,gender,email,description);
+            String kodeord = editProfile.getParameter("eKodeord");
+            allProfiles = rp.editProfile(id,name,gender,email,description,kodeord);
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        return "redirect:/profile";
+        return "redirect:/myprofile";
     }
 
     // Search Profiles
