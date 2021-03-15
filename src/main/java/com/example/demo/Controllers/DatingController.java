@@ -44,9 +44,6 @@ public class DatingController {
         String description = createProfileData.getParameter("pDescription");
         String kodeord = createProfileData.getParameter("pKodeord");
         rp.createProfile(name, kodeord, gender, email, description, admin,file);
-/*
-
- */
         return "login";
     }
 
